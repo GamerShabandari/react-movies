@@ -1,8 +1,5 @@
-import { logDOM } from "@testing-library/react";
 import axios from "axios";
-import { error } from "console";
 import { ChangeEvent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { IMovie } from "./models/IMovie";
 import { IResponseFromApi } from "./models/IResponseFromApi";
 import { ShowMovie } from "./ShowMovie";
@@ -12,6 +9,12 @@ export function Movies() {
     const [moviesFromApi, setMoviesFromApi] = useState<IMovie[]>([]);
     const [inputText, setInputText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(()=>{
+        let searchResultsSerialized: string = sessionStorage.getItem("searchResults") || "[]";
+        let searchResultsDeSerialized: IMovie[] = JSON.parse(searchResultsSerialized)
+        setMoviesFromApi([...searchResultsDeSerialized])
+    }, [])
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setInputText(e.target.value)
@@ -32,6 +35,7 @@ export function Movies() {
                 }
                 setMoviesFromApi([...filmArray])
                 setIsLoading(false)
+                sessionStorage.setItem("searchResults", JSON.stringify(filmArray));
             })
             .catch(error => {
                 alert("to many results, try another searchterm")
