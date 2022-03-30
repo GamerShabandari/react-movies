@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { IMovie } from "./models/IMovie";
 import { IResponseFromApi } from "./models/IResponseFromApi";
 import { ShowMovie } from "./ShowMovie";
@@ -41,6 +42,7 @@ export function Movies() {
                 }
                 setMoviesFromApi([...filmArray])
                 setIsLoading(false)
+                setInputText("")
                 sessionStorage.setItem("searchResults", JSON.stringify(filmArray));
             })
             .catch(error => {
@@ -68,8 +70,10 @@ export function Movies() {
     let listOfFavoritesHtml = savedFavorites.map((favorite, index) => {
         return (
             <div className="favoriteItem" key={index}>
-                <h6>{favorite.Title}</h6>
-                <img src={favorite.Poster} alt={"poster of " + favorite.Title} width="40px" />
+                <Link to={"/details/" + favorite.Title}>
+                    <img src={favorite.Poster} alt={"poster of " + favorite.Title} width="40px" />
+                    <h6>{favorite.Title}</h6>
+                </Link>
                 <button className="deleteBtn" onClick={() => { deleteFavorite(index) }}>X</button>
             </div>
         )
@@ -87,10 +91,10 @@ export function Movies() {
 
     return (<>
         <div className="container">
-            <section className="favoritesContainer">
-                <button className="favoritesBtn" onClick={showFavoritesHtml}>{savedFavorites.length}</button>
-                {showFavorites && <div>{listOfFavoritesHtml}</div>}
-            </section>
+            <button className="favoritesBtn" onClick={showFavoritesHtml}>{savedFavorites.length}</button>
+            {showFavorites && savedFavorites.length > 0 && <section className="favoritesContainer">
+                <div className="favorites">{listOfFavoritesHtml}</div>
+            </section>}
 
             <div className="inputContainer">
                 <input type="text" onChange={handleChange} value={inputText} placeholder="search movie" />

@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <header>
-          <h1>Welcome to Moviessearch</h1>
+          <h1>Flixville</h1>
         </header>
         
         <Routes>

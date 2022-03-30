@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #2e3b46;
+  background-color: #212329;
 }
 
 code {
@@ -17,7 +17,7 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #60b7ae;
+  color: #e55855;
   height: 15vh;
   width: 100%;
   letter-spacing: 5px;
@@ -31,34 +31,45 @@ header {
 }
 
 .favoritesContainer{
-  border: 1px solid red;
-  background-color: #60b7ae;
-  color: #eff8f8;
-  position: relative;
+  
+  background-color: #e55855;
+  color: #e8e7e8;
+  min-height: 40px;
+  height: fit-content;
+  padding: 40px;
+}
+
+.favorites{
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  min-height: 20px;
-  height: fit-content;
-  padding: 20px;
+  gap: 20px;
 }
 
 .favoriteItem{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 10px;
   background-color: transparent;
-  color: #2e3b46;
+  color: #212329;
   border-radius: 5px;
   width: 100px;
+  height: 200px;
   padding: 5px;
+  transition: 0.2s all;
+}
+
+.favoriteItem:hover{
+  transform: scale(1.1);
 }
 
 .favoriteItem h6{
+  
   margin: 0;
   padding: 0;
 }
@@ -69,15 +80,22 @@ header {
 }
 
 .deleteBtn{
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
-  background-color:#2e3b46;
-  color: #eff8f8;
+  background-color:#212329;
+  color: #e8e7e8;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 100%;
   transition: 0.2s all;
+  z-index: 99;
+  right: -15px;
+  top: -15px;
+}
+.deleteBtn:hover{
+  transform: scale(1.1);
 }
 
 .favoritesBtn{
@@ -85,7 +103,7 @@ header {
   right: 10px;
   top: 10px;
   border: none;
-  background-color: #eff8f8;
+  background-color: #e8e7e8;
   color: #2e3b46;
   padding: 5px;
   border-radius: 5px;
@@ -104,7 +122,7 @@ header {
 
 .inputBtn{
   border: none;
-  background-color: #eff8f8;
+  background-color: #e8e7e8;
   color: #2e3b46;
   padding: 10px;
   border-radius: 5px;
@@ -122,7 +140,7 @@ input{
   font-size: 1rem;
   padding: 8px;
   color: #2e3b46;
-  background-color: #eff8f8;
+  background-color: #e8e7e8;
 }
 
 .moviesContainer{
