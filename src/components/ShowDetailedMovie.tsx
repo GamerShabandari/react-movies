@@ -57,9 +57,25 @@ export function ShowDetailedMovie() {
 
     }, [id])
 
-    function addMovieToFavorites(){
+    function addMovieToFavorites() {
 
-        localStorage.setItem("myFavoriteMovies", JSON.stringify(chosenMovie));
+        let savedFavoritesSerialized: string = localStorage.getItem("myFavoriteMovies") || "[]";
+        let savedFavoritesDeSerialized: IMovie[] = JSON.parse(savedFavoritesSerialized);
+
+        if (savedFavoritesDeSerialized.length === 0) {
+            localStorage.setItem("myFavoriteMovies", JSON.stringify([chosenMovie]));
+        } else {
+            for (let i = 0; i < savedFavoritesDeSerialized.length; i++) {
+                const favorite = savedFavoritesDeSerialized[i];
+
+                if (favorite.Title === chosenMovie.Title) {
+                    return
+                }
+
+            }
+            savedFavoritesDeSerialized.push(chosenMovie)
+            localStorage.setItem("myFavoriteMovies", JSON.stringify(savedFavoritesDeSerialized));
+        }
 
     }
 

@@ -7,13 +7,19 @@ import { ShowMovie } from "./ShowMovie";
 export function Movies() {
 
     const [moviesFromApi, setMoviesFromApi] = useState<IMovie[]>([]);
+    const [savedFavorites, setSavedFavorites] = useState<IMovie[]>([]);
     const [inputText, setInputText] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [showFavorites, setShowFavorites] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         let searchResultsSerialized: string = sessionStorage.getItem("searchResults") || "[]";
         let searchResultsDeSerialized: IMovie[] = JSON.parse(searchResultsSerialized)
         setMoviesFromApi([...searchResultsDeSerialized])
+
+        let savedFavoritesSerialized: string = localStorage.getItem("myFavoriteMovies") || "[]";
+        let savedFavoritesDeSerialized = JSON.parse(savedFavoritesSerialized);
+        setSavedFavorites([...savedFavoritesDeSerialized])
     }, [])
 
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -21,7 +27,7 @@ export function Movies() {
     }
 
     function searchMovie() {
-    
+
         setIsLoading(true)
         let filmArray: IMovie[] = [];
 
@@ -42,6 +48,33 @@ export function Movies() {
             })
     }
 
+    function showFavoritesHtml() {
+
+        setShowFavorites(!showFavorites)
+
+    }
+
+    function deleteFavorite(indexToDelete: number) {
+
+        let savedFavoritesSerialized: string = localStorage.getItem("myFavoriteMovies") || "[]";
+        let savedFavoritesDeSerialized: IMovie[] = JSON.parse(savedFavoritesSerialized);
+
+        savedFavoritesDeSerialized.splice(indexToDelete, 1)
+        localStorage.setItem("myFavoriteMovies", JSON.stringify(savedFavoritesDeSerialized));
+        setSavedFavorites([...savedFavoritesDeSerialized])
+
+    }
+
+    let listOfFavoritesHtml = savedFavorites.map((favorite, index) => {
+        return (
+            <div key={index}>
+                <h6>{favorite.Title}</h6>
+                <img src={favorite.Poster} alt={"poster of " + favorite.Title} width="40px" />
+                <button onClick={() => { deleteFavorite(index) }}>delete favorite</button>
+            </div>
+        )
+
+    })
 
     let listOfMoviesHtml = moviesFromApi.map((movie, index) => {
 
@@ -53,16 +86,22 @@ export function Movies() {
     })
 
     return (<>
-        
-        
 
-        <input type="text" onChange={handleChange} value={inputText} placeholder="search movie" />
-        <button onClick={searchMovie}>search</button>
+        <section className="favoritesContainer">
+            <button onClick={showFavoritesHtml}>Show favorites</button>
+            <div>you have {savedFavorites.length} favorites</div>
+            {showFavorites && <div>{listOfFavoritesHtml}</div>}
+        </section>
 
-        
-        <div>amount of movies in array: {moviesFromApi.length}</div>
+        <div className="inputContainer">
+            <input type="text" onChange={handleChange} value={inputText} placeholder="search movie" />
+            <button onClick={searchMovie}>search</button>
+        </div>
 
-        {isLoading && <div>Loading</div> }
-        {!isLoading && listOfMoviesHtml}
+        <main className="moviesContainer">
+            {isLoading && <div>Loading</div>}
+            {!isLoading && listOfMoviesHtml}
+        </main>
+
     </>)
 }

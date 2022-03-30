@@ -3,6 +3,7 @@ import { Movies } from './components/Movies';
 import { ShowDetailedMovie } from './components/ShowDetailedMovie';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+
 function App() {
   return (
     <div className="App">
@@ -10,6 +11,7 @@ function App() {
         <header>
           <h1>Welcome to Moviessearch</h1>
         </header>
+        
         <Routes>
 
           <Route path='/' element={<Movies></Movies>}></Route>
