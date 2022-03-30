@@ -67,10 +67,10 @@ export function Movies() {
 
     let listOfFavoritesHtml = savedFavorites.map((favorite, index) => {
         return (
-            <div key={index}>
+            <div className="favoriteItem" key={index}>
                 <h6>{favorite.Title}</h6>
                 <img src={favorite.Poster} alt={"poster of " + favorite.Title} width="40px" />
-                <button onClick={() => { deleteFavorite(index) }}>delete favorite</button>
+                <button className="deleteBtn" onClick={() => { deleteFavorite(index) }}>X</button>
             </div>
         )
 
@@ -86,22 +86,23 @@ export function Movies() {
     })
 
     return (<>
+        <div className="container">
+            <section className="favoritesContainer">
+                <button className="favoritesBtn" onClick={showFavoritesHtml}>{savedFavorites.length}</button>
+                {showFavorites && <div>{listOfFavoritesHtml}</div>}
+            </section>
 
-        <section className="favoritesContainer">
-            <button onClick={showFavoritesHtml}>Show favorites</button>
-            <div>you have {savedFavorites.length} favorites</div>
-            {showFavorites && <div>{listOfFavoritesHtml}</div>}
-        </section>
+            <div className="inputContainer">
+                <input type="text" onChange={handleChange} value={inputText} placeholder="search movie" />
+                <button className="inputBtn" onClick={searchMovie}>search</button>
+            </div>
 
-        <div className="inputContainer">
-            <input type="text" onChange={handleChange} value={inputText} placeholder="search movie" />
-            <button onClick={searchMovie}>search</button>
+            <main className="moviesContainer">
+                {isLoading && <div className="loading">Loading...</div>}
+                {!isLoading && listOfMoviesHtml}
+            </main>
         </div>
 
-        <main className="moviesContainer">
-            {isLoading && <div>Loading</div>}
-            {!isLoading && listOfMoviesHtml}
-        </main>
 
     </>)
 }

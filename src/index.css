@@ -5,9 +5,165 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #2e3b46;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #60b7ae;
+  height: 15vh;
+  width: 100%;
+  letter-spacing: 5px;
+}
+.container{
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.favoritesContainer{
+  border: 1px solid red;
+  background-color: #60b7ae;
+  color: #eff8f8;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 20px;
+  height: fit-content;
+  padding: 20px;
+}
+
+.favoriteItem{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  background-color: transparent;
+  color: #2e3b46;
+  border-radius: 5px;
+  width: 100px;
+  padding: 5px;
+}
+
+.favoriteItem h6{
+  margin: 0;
+  padding: 0;
+}
+
+.favoriteItem img{
+  border-radius: 5px;
+  width: 100px;
+}
+
+.deleteBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color:#2e3b46;
+  color: #eff8f8;
+  padding: 5px;
+  border-radius: 5px;
+  transition: 0.2s all;
+}
+
+.favoritesBtn{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: none;
+  background-color: #eff8f8;
+  color: #2e3b46;
+  padding: 5px;
+  border-radius: 5px;
+  transition: 0.2s all;
+}
+.favoritesBtn:hover{
+  transform: scale(1.1);
+}
+
+.inputContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.inputBtn{
+  border: none;
+  background-color: #eff8f8;
+  color: #2e3b46;
+  padding: 10px;
+  border-radius: 5px;
+  height: fit-content;
+  transition: 0.2s all;
+}
+.inputBtn:hover{
+  transform: scale(1.1);
+}
+
+input{
+  width: 20rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 8px;
+  color: #2e3b46;
+  background-color: #eff8f8;
+}
+
+.moviesContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items:flex-start;
+  gap: 20px;
+  padding: 30px;
+}
+
+.loading{
+  border: 2px solid red;
+}
+
+.movieCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  height: fit-content;
+  width: fit-content;
+}
+
+.cardTitle{
+  width: 150px;
+  height: 160px;
+  text-align: center;
+  overflow: hidden;
+  font-weight: 100;
+  color: #eff8f8;
+  text-decoration: none;
+}
+
+.cardImg{
+  border-radius: 5px;
+  transition: 0.2s all;
+}
+
+.cardImg:hover {
+  transform: scale(1.1);
 }
