@@ -57,12 +57,27 @@ export function ShowDetailedMovie() {
 
     }, [id])
 
+    function addMovieToFavorites(){
+
+        localStorage.setItem("myFavoriteMovies", JSON.stringify(chosenMovie));
+
+    }
+
 
     return (<>
-        <Link to="/">Hem igen</Link>
+        <Link to="/">Back to results</Link>
         <div>
-            {chosenMovie.Title}
-            {chosenMovie.Plot}
+            <h2>{chosenMovie.Title}</h2>
+            <img src={chosenMovie.Poster} alt={"poster of " + chosenMovie.Title} />
+            <button onClick={addMovieToFavorites}>Add to favorites</button>
+            <h3>Plot: {chosenMovie.Plot}</h3>
+            <h4>IMDB rating {chosenMovie.imdbRating} with {chosenMovie.imdbVotes} votes</h4>
+            <h5>Metascore: {chosenMovie.Metascore}</h5>
+            <h5>Rated: {chosenMovie.Rated}</h5>
+            <h4>Released: {chosenMovie.Year}</h4>
+            <h4>Runtime: {chosenMovie.Runtime}</h4>
+            <h5>Director: {chosenMovie.Director}</h5>
+            <h5>Genre: {chosenMovie.Genre}</h5>
         </div>
 
     </>)
