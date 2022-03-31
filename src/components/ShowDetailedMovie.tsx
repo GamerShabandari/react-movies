@@ -58,13 +58,15 @@ export function ShowDetailedMovie() {
 
                             SetChosenMovie(matchedMovie);
 
+                            return
+
                         })
                 }
             }
-        } else if (searchResultsDeSerialized.length === 0) {
+        }
 
-            let searchResultsSerialized: string = localStorage.getItem("myFavoriteMovies") || "[]";
-            let searchResultsDeSerialized: IMovie[] = JSON.parse(searchResultsSerialized)
+            searchResultsSerialized = localStorage.getItem("myFavoriteMovies") || "[]";
+            searchResultsDeSerialized = JSON.parse(searchResultsSerialized)
 
             for (let i = 0; i < searchResultsDeSerialized.length; i++) {
                 const result = searchResultsDeSerialized[i];
@@ -96,7 +98,7 @@ export function ShowDetailedMovie() {
                 }
             }
 
-        }
+        
 
 
 
