@@ -1,0 +1,1 @@
+react application for school using OMDB-API 
