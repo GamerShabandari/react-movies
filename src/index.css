@@ -22,7 +22,11 @@ header {
   width: 100%;
   letter-spacing: 5px;
   font-size: 3rem;
-  
+}
+
+header a{
+  text-decoration: none;
+  color: #e55855;
 }
 .container{
   width: 100%;
@@ -56,19 +60,25 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
   background-color: transparent;
   color: #212329;
   border-radius: 5px;
   width: 100px;
-  height: 200px;
-  padding: 5px;
-  
+  height: fit-content;
+  padding: 5px; 
 }
 
 .favoriteItem a{
   color:#212329;
   text-decoration: none;
+  font-size: 1rem;
+  margin: 0px;
+  padding: 0px;
+}
+
+.favoriteItem h6{
+  margin: 5px;
+  padding: 0;
 }
 
 .favoriteItem img{
@@ -83,28 +93,27 @@ header {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-
-
 .deleteBtn{
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
-  background-color:#212329;
-  color: #e8e7e8;
-  padding: 5px;
-  border-radius: 100%;
+  background-color:transparent;
+  color: #212329;
   transition: 0.2s all;
   z-index: 99;
-  right: -15px;
-  top: -15px;
+  right: -10px;
+  top: -10px;
 }
 .deleteBtn:hover{
-  transform: scale(1.1);
+  transform: scale(2);
 }
 
 .favoritesBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -112,11 +121,11 @@ header {
   background-color: #e8e7e8;
   color: #2e3b46;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 100%;
   transition: 0.2s all;
 }
 .favoritesBtn:hover{
-  transform: scale(1.1);
+  transform: scale(1.3);
 }
 
 .inputContainer{
@@ -198,10 +207,13 @@ input{
 
 .cardImg:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 #e55755a1;
 }
 
 .backBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background-color: #e8e7e8;
   color: #2e3b46;

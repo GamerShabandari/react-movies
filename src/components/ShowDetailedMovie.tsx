@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
 import { IDetailedMovie } from "./models/IDetailedMovie";
 import { IMovie } from "./models/IMovie";
+import { GrFavorite } from "react-icons/gr"
+import { MdArrowBack } from "react-icons/md"
+
+
 
 export function ShowDetailedMovie() {
 
@@ -123,12 +127,12 @@ export function ShowDetailedMovie() {
 
     return (<>
 
-        <Link className="backBtn" to="/">Back to results</Link>
+        <Link className="backBtn" to="/"> <MdArrowBack></MdArrowBack> </Link>
         <div className="detailsCard">
             <h2 className="title">{chosenMovie.Title}</h2>
             <img src={chosenMovie.Poster} alt={"poster of " + chosenMovie.Title} />
             <div className="decorationLine"></div>
-            <button className="favoritesBtn" onClick={addMovieToFavorites}>+</button>
+            <button className="favoritesBtn" onClick={addMovieToFavorites}> <GrFavorite></GrFavorite> </button>
             <h3 className="plot">{chosenMovie.Plot}</h3>
             <div className="decorationLine"></div>
             <h4 className="imdb"><em><strong>IMDB rating: </strong></em>{chosenMovie.imdbRating} with {chosenMovie.imdbVotes} votes</h4>
