@@ -81,19 +81,22 @@ export function ShowDetailedMovie() {
 
 
     return (<>
-        <Link to="/">Back to results</Link>
-        <div>
-            <h2>{chosenMovie.Title}</h2>
+        <Link className="backBtn" to="/">Back to results</Link>
+        <div className="detailsCard">
+            <h2 className="title">{chosenMovie.Title}</h2>
             <img src={chosenMovie.Poster} alt={"poster of " + chosenMovie.Title} />
-            <button onClick={addMovieToFavorites}>Add to favorites</button>
-            <h3>Plot: {chosenMovie.Plot}</h3>
-            <h4>IMDB rating {chosenMovie.imdbRating} with {chosenMovie.imdbVotes} votes</h4>
-            <h5>Metascore: {chosenMovie.Metascore}</h5>
-            <h5>Rated: {chosenMovie.Rated}</h5>
-            <h4>Released: {chosenMovie.Year}</h4>
-            <h4>Runtime: {chosenMovie.Runtime}</h4>
-            <h5>Director: {chosenMovie.Director}</h5>
-            <h5>Genre: {chosenMovie.Genre}</h5>
+            <div className="decorationLine"></div>
+            <button className="favoritesBtn" onClick={addMovieToFavorites}>+</button>
+            <h3 className="plot">{chosenMovie.Plot}</h3>
+            <div className="decorationLine"></div>
+            <h4 className="imdb"><em><strong>IMDB rating: </strong></em>{chosenMovie.imdbRating} with {chosenMovie.imdbVotes} votes</h4>
+            <h5 className="metascore"><em><strong>Metascore: </strong></em>{chosenMovie.Metascore}</h5>
+            <h5 className="rated"><em><strong>Rated: </strong></em>{chosenMovie.Rated}</h5>
+            <h4 className="released"><em><strong>Released: </strong></em>{chosenMovie.Year}</h4>
+            <h4 className="runtime"><em><strong>Runtime: </strong></em>{chosenMovie.Runtime}</h4>
+            <h5 className="director"><em><strong>Director: </strong></em>{chosenMovie.Director}</h5>
+            <h5 className="genre"><em><strong>Genre: </strong></em>{chosenMovie.Genre}</h5>
+            
         </div>
 
     </>)
