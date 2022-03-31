@@ -1,7 +1,7 @@
 import './App.css';
 import { Movies } from './components/Movies';
 import { ShowDetailedMovie } from './components/ShowDetailedMovie';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 
 
 function App() {
@@ -9,9 +9,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <header>
-          <h1>Flixville</h1>
+          <Link to="/"><h1>Flixville</h1></Link>
         </header>
-        
+
         <Routes>
 
           <Route path='/' element={<Movies></Movies>}></Route>

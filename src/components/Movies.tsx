@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { IMovie } from "./models/IMovie";
 import { IResponseFromApi } from "./models/IResponseFromApi";
 import { ShowMovie } from "./ShowMovie";
+import { GrFavorite } from "react-icons/gr"
+import { MdRemoveCircle, MdSearch } from "react-icons/md"
 
 export function Movies() {
 
@@ -74,7 +76,7 @@ export function Movies() {
                     <img src={favorite.Poster} alt={"poster of " + favorite.Title} width="40px" />
                     <h6>{favorite.Title}</h6>
                 </Link>
-                <button className="deleteBtn" onClick={() => { deleteFavorite(index) }}>X</button>
+                <button className="deleteBtn" onClick={() => { deleteFavorite(index) }}> <MdRemoveCircle></MdRemoveCircle> </button>
             </div>
         )
 
@@ -91,14 +93,14 @@ export function Movies() {
 
     return (<>
         <div className="container">
-            <button className="favoritesBtn" onClick={showFavoritesHtml}>{savedFavorites.length}</button>
+            <button className="favoritesBtn" onClick={showFavoritesHtml}><GrFavorite></GrFavorite>{savedFavorites.length}</button>
             {showFavorites && savedFavorites.length > 0 && <section className="favoritesContainer">
                 <div className="favorites">{listOfFavoritesHtml}</div>
             </section>}
 
             <div className="inputContainer">
                 <input type="text" onChange={handleChange} value={inputText} placeholder="search movie" />
-                <button className="inputBtn" onClick={searchMovie}>search</button>
+                <button className="inputBtn" onClick={searchMovie}> <MdSearch></MdSearch> </button>
             </div>
 
             <main className="moviesContainer">
