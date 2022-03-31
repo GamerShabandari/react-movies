@@ -22,38 +22,79 @@ export function ShowDetailedMovie() {
     })
 
     useEffect(() => {
+
         let searchResultsSerialized: string = sessionStorage.getItem("searchResults") || "[]";
         let searchResultsDeSerialized: IMovie[] = JSON.parse(searchResultsSerialized)
 
-        for (let i = 0; i < searchResultsDeSerialized.length; i++) {
-            const result = searchResultsDeSerialized[i];
+        if (searchResultsDeSerialized.length > 0) {
 
-            if (result.Title === id) {
+            for (let i = 0; i < searchResultsDeSerialized.length; i++) {
+                const result = searchResultsDeSerialized[i];
 
-                axios.get<IDetailedMovie>("https://www.omdbapi.com/?t=" + result.Title + "&apikey=5ed1c386&s")
-                    .then(response => {
+                if (result.Title === id) {
 
-                        let matchedMovie: IDetailedMovie = {
+                    axios.get<IDetailedMovie>("https://www.omdbapi.com/?t=" + result.Title + "&apikey=5ed1c386&s")
+                        .then(response => {
 
-                            Title: response.data.Title,
-                            Poster: response.data.Poster,
-                            Genre: response.data.Genre,
-                            Year: response.data.Year,
-                            Runtime: response.data.Runtime,
-                            Rated: response.data.Rated,
-                            Plot: response.data.Plot,
-                            Director: response.data.Director,
-                            Metascore: response.data.Metascore,
-                            imdbRating: response.data.imdbRating,
-                            imdbVotes: response.data.imdbVotes,
+                            let matchedMovie: IDetailedMovie = {
 
-                        }
+                                Title: response.data.Title,
+                                Poster: response.data.Poster,
+                                Genre: response.data.Genre,
+                                Year: response.data.Year,
+                                Runtime: response.data.Runtime,
+                                Rated: response.data.Rated,
+                                Plot: response.data.Plot,
+                                Director: response.data.Director,
+                                Metascore: response.data.Metascore,
+                                imdbRating: response.data.imdbRating,
+                                imdbVotes: response.data.imdbVotes,
 
-                        SetChosenMovie(matchedMovie);
+                            }
 
-                    })
+                            SetChosenMovie(matchedMovie);
+
+                        })
+                }
             }
+        } else if (searchResultsDeSerialized.length === 0) {
+
+            let searchResultsSerialized: string = localStorage.getItem("myFavoriteMovies") || "[]";
+            let searchResultsDeSerialized: IMovie[] = JSON.parse(searchResultsSerialized)
+
+            for (let i = 0; i < searchResultsDeSerialized.length; i++) {
+                const result = searchResultsDeSerialized[i];
+
+                if (result.Title === id) {
+
+                    axios.get<IDetailedMovie>("https://www.omdbapi.com/?t=" + result.Title + "&apikey=5ed1c386&s")
+                        .then(response => {
+
+                            let matchedMovie: IDetailedMovie = {
+
+                                Title: response.data.Title,
+                                Poster: response.data.Poster,
+                                Genre: response.data.Genre,
+                                Year: response.data.Year,
+                                Runtime: response.data.Runtime,
+                                Rated: response.data.Rated,
+                                Plot: response.data.Plot,
+                                Director: response.data.Director,
+                                Metascore: response.data.Metascore,
+                                imdbRating: response.data.imdbRating,
+                                imdbVotes: response.data.imdbVotes,
+
+                            }
+
+                            SetChosenMovie(matchedMovie);
+
+                        })
+                }
+            }
+
         }
+
+
 
     }, [id])
 
@@ -81,6 +122,7 @@ export function ShowDetailedMovie() {
 
 
     return (<>
+
         <Link className="backBtn" to="/">Back to results</Link>
         <div className="detailsCard">
             <h2 className="title">{chosenMovie.Title}</h2>
@@ -96,7 +138,7 @@ export function ShowDetailedMovie() {
             <h4 className="runtime"><em><strong>Runtime: </strong></em>{chosenMovie.Runtime}</h4>
             <h5 className="director"><em><strong>Director: </strong></em>{chosenMovie.Director}</h5>
             <h5 className="genre"><em><strong>Genre: </strong></em>{chosenMovie.Genre}</h5>
-            
+
         </div>
 
     </>)

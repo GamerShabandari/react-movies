@@ -18,7 +18,7 @@ header {
   justify-content: center;
   align-items: center;
   color: #e55855;
-  height: 15vh;
+  height: 200px;
   width: 100%;
   letter-spacing: 5px;
   font-size: 3rem;
@@ -160,12 +160,13 @@ input{
 }
 
 .loading{
-  width: 100%;
+  width: 200px;
   height: fit-content;
   padding: 30px;
   font-size: 2rem;
   color: #e8e7e8;
   background-color: #e55855;
+  border-radius: 5px;
 }
 
 .movieCard{
@@ -266,6 +267,7 @@ input{
   margin: 0;
   padding: 10px;
   font-weight: 200;
+  
 }
 
 .metascore{
