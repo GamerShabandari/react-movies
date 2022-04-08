@@ -71,7 +71,7 @@ export function Movies() {
 
     let listOfFavoritesHtml = savedFavorites.map((favorite, index) => {
         return (
-            <div className="favoriteItem" key={index}>
+            <div className="favoriteItem animate__animated animate__fadeIn" key={index}>
                 <Link to={"/details/" + favorite.Title}>
                     <img src={favorite.Poster} alt={"poster of " + favorite.Title} width="40px" />
                     <h6>{favorite.Title}</h6>
@@ -81,6 +81,8 @@ export function Movies() {
         )
 
     })
+
+    
 
     let listOfMoviesHtml = moviesFromApi.map((movie, index) => {
 
@@ -93,7 +95,7 @@ export function Movies() {
 
     return (<>
         <div className="container">
-            <button className="favoritesBtn" onClick={showFavoritesHtml}><GrFavorite></GrFavorite>{savedFavorites.length}</button>
+            <button className="favoritesBtn animate__animated animate__fadeIn animate__delay-1s" onClick={showFavoritesHtml}><GrFavorite></GrFavorite>{savedFavorites.length}</button>
             {showFavorites && savedFavorites.length > 0 && <section className="favoritesContainer">
                 <div className="favorites">{listOfFavoritesHtml}</div>
             </section>}

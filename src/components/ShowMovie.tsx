@@ -9,12 +9,10 @@ export function ShowMovie(props: IShowMovieProps) {
     return (<>
 
         <Link to={"/details/" + props.movie.Title}>
-            <div className="movieCard" >
-            <img className="cardImg" src={props.movie.Poster} alt={"poster of " + props.movie.Title} width="200px" />
-
-
+            <div className="movieCard animate__animated animate__fadeIn" >
+                <img className="cardImg" src={props.movie.Poster} alt={"poster of " + props.movie.Title} width="200px" />
             </div>
-          
+
         </Link>
 
     </>)

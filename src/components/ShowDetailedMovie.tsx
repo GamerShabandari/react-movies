@@ -129,21 +129,21 @@ export function ShowDetailedMovie() {
 
     return (<>
 
-        <Link className="backBtn" to="/"> <MdArrowBack></MdArrowBack> </Link>
-        <div className="detailsCard">
-            <h2 className="title">{chosenMovie.Title}</h2>
-            <img src={chosenMovie.Poster} alt={"poster of " + chosenMovie.Title} />
-            <div className="decorationLine"></div>
-            <button className="favoritesBtn" onClick={addMovieToFavorites}> <GrFavorite></GrFavorite> </button>
-            <h3 className="plot">{chosenMovie.Plot}</h3>
-            <div className="decorationLine"></div>
-            <h4 className="imdb"><em><strong>IMDB rating: </strong></em>{chosenMovie.imdbRating} with {chosenMovie.imdbVotes} votes</h4>
-            <h5 className="metascore"><em><strong>Metascore: </strong></em>{chosenMovie.Metascore}</h5>
-            <h5 className="rated"><em><strong>Rated: </strong></em>{chosenMovie.Rated}</h5>
-            <h4 className="released"><em><strong>Released: </strong></em>{chosenMovie.Year}</h4>
-            <h4 className="runtime"><em><strong>Runtime: </strong></em>{chosenMovie.Runtime}</h4>
-            <h5 className="director"><em><strong>Director: </strong></em>{chosenMovie.Director}</h5>
-            <h5 className="genre"><em><strong>Genre: </strong></em>{chosenMovie.Genre}</h5>
+        <Link className="backBtn animate__animated animate__fadeIn" to="/"> <MdArrowBack></MdArrowBack> </Link>
+        <div className="detailsCard animate__animated animate__fadeIn">
+            <h2 className="title animate__animated animate__fadeIn">{chosenMovie.Title}</h2>
+            <img className="animate__animated animate__fadeIn  animate__delay-1s" src={chosenMovie.Poster} alt={"poster of " + chosenMovie.Title} />
+            <div className="decorationLine animate__animated animate__fadeIn  animate__delay-1s"></div>
+            <button className="favoritesBtn animate__animated animate__fadeIn" onClick={addMovieToFavorites}> <GrFavorite></GrFavorite> </button>
+            <h3 className="plot animate__animated animate__fadeIn">{chosenMovie.Plot}</h3>
+            <div className="decorationLine animate__animated animate__fadeIn  animate__delay-1s"></div>
+            <h4 className="imdb animate__animated animate__fadeIn  animate__delay-1s"><em><strong>IMDB rating: </strong></em>{chosenMovie.imdbRating} with {chosenMovie.imdbVotes} votes</h4>
+            <h5 className="metascore animate__animated animate__fadeIn  animate__delay-1s"><em><strong>Metascore: </strong></em>{chosenMovie.Metascore}</h5>
+            <h5 className="rated animate__animated animate__fadeIn  animate__delay-1s"><em><strong>Rated: </strong></em>{chosenMovie.Rated}</h5>
+            <h4 className="released animate__animated animate__fadeIn  animate__delay-1s"><em><strong>Released: </strong></em>{chosenMovie.Year}</h4>
+            <h4 className="runtime animate__animated animate__fadeIn  animate__delay-1s"><em><strong>Runtime: </strong></em>{chosenMovie.Runtime}</h4>
+            <h5 className="director animate__animated animate__fadeIn  animate__delay-1s"><em><strong>Director: </strong></em>{chosenMovie.Director}</h5>
+            <h5 className="genre animate__animated animate__fadeIn  animate__delay-1s"><em><strong>Genre: </strong></em>{chosenMovie.Genre}</h5>
 
         </div>
 
