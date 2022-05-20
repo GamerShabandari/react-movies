@@ -2,10 +2,12 @@ import axios from "axios";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IMovie } from "./models/IMovie";
+import { motion } from "framer-motion";
 import { IResponseFromApi } from "./models/IResponseFromApi";
 import { ShowMovie } from "./ShowMovie";
-import { GrFavorite } from "react-icons/gr"
-import { MdRemoveCircle, MdSearch } from "react-icons/md"
+import { GrFavorite } from "react-icons/gr";
+import { MdRemoveCircle, MdSearch } from "react-icons/md";
+import { Player, Controls } from '@lottiefiles/react-lottie-player';
 
 export function Movies() {
 
@@ -82,14 +84,18 @@ export function Movies() {
 
     })
 
-    
+
 
     let listOfMoviesHtml = moviesFromApi.map((movie, index) => {
 
         return (
-            <div key={index}>
+            <motion.div key={index}
+                initial={{ opacity: 0, translateY: -20 }}
+                animate={{ opacity: 1, translateY: 0 }}
+                transition={{ ease: "easeInOut", duration: 0.2, delay: index * 0.2 }}
+            >
                 <ShowMovie movie={movie}></ShowMovie>
-            </div>
+            </motion.div>
         )
     })
 
@@ -106,7 +112,15 @@ export function Movies() {
             </div>
 
             <main className="moviesContainer">
-                {isLoading && <div className="loading">Loading...</div>}
+                {isLoading && <div className="loading"><Player
+                    autoplay
+                    loop
+                    src='https://assets5.lottiefiles.com/temp/lf20_iMaR3E.json'
+                    style={{ height: '200px', width: '200px' }}
+                >
+                    <Controls visible={false} buttons={['play', 'repeat', 'frame', 'debug']} />
+                </Player></div>}
+                
                 {!isLoading && listOfMoviesHtml}
             </main>
         </div>
