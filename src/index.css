@@ -37,8 +37,8 @@ header {
    color: #e55855;
  }
  .container{
-   width: 100%;
-  padding: 30px;
+   width: auto;
+  padding: 0px;
   display: flex;
   flex-direction: column;
   gap: 30px;
